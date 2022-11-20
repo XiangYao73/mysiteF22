@@ -1,0 +1,13 @@
+{% extends 'myapp/base.html' %}
+{% block myhdg %}
+Hello {{ request.user }}
+{% endblock %}
+
+{% block body_block %}
+    <h2>This is the about page</h2>
+    {% if last_visit %}
+    <h3>Total visits : {{ last_visit }} </h3>
+    {% endif %}
+    <p><a href={% url 'myapp:index' %}>Main page (namespaced URL)</a></p>
+    <p><a href="/myapp/">Main page (hardcoded URL)</a></p>
+{% endblock %}

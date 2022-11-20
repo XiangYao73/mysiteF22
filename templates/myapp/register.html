@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <title>
+        Register
+    </title>
+</html>
+<body>
+    <h2>Register Page</h2>
+    <form action="/myapp/register/" method="post">
+        {% csrf_token %}
+        <div>
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username"/>
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password"/>
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email"/>
+        </div>
+        <div>
+            <input type="submit" value="submit">
+        </div>
+    </form>
+</body>

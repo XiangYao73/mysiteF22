@@ -1,0 +1,20 @@
+{% extends 'myapp/base.html' %}
+{% block myhdg %}
+Hello {{ request.user }}
+{% endblock %}
+
+{% block body_block %}
+     {% if category %}
+        <h2>Information about this category</h2>
+        <p>name: {{category.name}}</p>
+        <p>warehouse: {{category.warehouse}}</p>
+        <h2>List of products</h2>
+        <ol>
+            {% for product in product_list %}
+                <li>{{ product.name }}</li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <strong>There are no available categories!</strong>
+    {% endif %}
+{% endblock %}

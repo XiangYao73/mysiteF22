@@ -1,0 +1,16 @@
+{% extends 'myapp/base.html' %}
+{% block body_block %}
+    {% if orderset %}
+    <h4>Orders :</h4>
+    <ul>
+        {% for orders in orderset %}
+        <li>
+            {{ orders.client }} placed order for {{orders.num_units}} {{ orders.product }}(s)
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <h4>You have not placed any orders</h4>
+    {% endif %}
+{% endblock %}
+

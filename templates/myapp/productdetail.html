@@ -1,0 +1,16 @@
+{% extends 'myapp/base.html' %}
+{% block body_block %}
+        {% if prod.available %}
+            <h3>{{ prod.name }}</h3>
+            <h4>People interested : {{ prod.interested }}</h4>
+            <h4>Price : {{ prod.price }}</h4>
+        {% else %}
+            <h3>Product {{ prod.name }} is not available</h3>
+        {% endif %}
+    <form action="{% url 'myapp:productdetail' prod.id %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="sumbit">
+    </form>
+{% endblock %}
+    

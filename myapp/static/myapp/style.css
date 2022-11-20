@@ -1,0 +1,16 @@
+.hbar1 {
+    display: inline;
+    margin: 15px;
+}
+
+h1 {
+    font-size: large;
+    color: blue;
+    border-left-style: none;
+    position: center;
+}
+
+body{
+    background-color: pink;
+    color: black;
+}
