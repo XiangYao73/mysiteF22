@@ -4,13 +4,13 @@ Hello {{ request.user }}
 {% endblock %}
 
 {% block body_block %}
-     {% if category %}
+     {% if cat_name %}
         <h2>Information about this category</h2>
-        <p>name: {{category.name}}</p>
-        <p>warehouse: {{category.warehouse}}</p>
+        <p>name: {{cat_name.name}}</p>
+        <p>warehouse: {{cat_name.warehouse}}</p>
         <h2>List of products</h2>
         <ol>
-            {% for product in product_list %}
+            {% for product in prod_list %}
                 <li>{{ product.name }}</li>
             {% endfor %}
         </ol>
