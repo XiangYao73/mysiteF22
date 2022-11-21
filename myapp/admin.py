@@ -10,8 +10,9 @@ def add_stock(modeladmin, request, queryset):
 #    add_stock.short_description = "Update available status and add 50 in stock"
 
 
-def prefer_categories(obj):
-    return obj.interested_in.all().values_list()
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('name', 'category', 'price', 'stock', 'available')
+    actions = [add_stock]
 
 
 class ClientAdmin(admin.ModelAdmin):
