@@ -11,12 +11,20 @@ def add_stock(modeladmin, request, queryset):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'stock', 'available')
+    list_display = ('name', 'category', 'price', 'stock', 'available')
     actions = [add_stock]
+
+
+def prefer_categories(obj):
+    return obj.interested_in.all().values_list()
+
+
+class ClientAdmin(admin.ModelAdmin):
+    list_display = ('first_name', 'last_name', 'city', prefer_categories)
 
 
 # Register your models here.
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category)
-admin.site.register(Client)
+admin.site.register(Client, ClientAdmin)
 admin.site.register(Order)
