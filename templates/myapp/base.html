@@ -3,10 +3,12 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="{% static 'myapp/style.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'myapp/bootstrap.css' %}"/>
+        <script type="text/javascript" src="{% static 'myapp/bootstrap.js' %}"></script>
         <title>Online Store APP - {% block title %}Welcome!{% endblock %}</title>
     </head>
 <body>
-    <div>
+    <header>
         <h1>{% block myhdg %}
             {% if user.is_authenticated %}
             <p>Hi, {{ user.get_username }}</p>
@@ -14,26 +16,32 @@
             <p>Hi User</p>
             {% endif %}
             {% endblock %}</h1>
-        {% block body_block %}*** {% endblock %}
-    </div>
-    <hr/>
-    {% if request.user.is_authenticated %}
-        <div>
-            <dl>
-                <li class="userstatus"><a href="{% url 'myapp:logout' %}">Logout</a></li>
-                <li class="userstatus"><a href="{% url 'myapp:myorders' %}">View my orders</a></li>
-            </dl>
+    </header>
+    <nav class="row">
+        <div class="col-sm-10">
+            <ul>
+                <li class="hbar1"><a href="/myapp/about/">Find out about this site</a></li>
+                <li class="hbar1"><a href = "{% url 'myapp:index' %}">Click here to return to main page</a></li>
+                <li class="hbar1"><a href="{% url 'myapp:products' %}">Products</a></li>
+            </ul>
         </div>
-    {% else %}
-        <a style="color:blue" class="userstatus" href="{% url 'myapp:register' %}">Register Here</a>
-        <a style="color:blue" class="userstatus" href="{% url 'myapp:login' %}">Login</a>
-    {% endif %}
-    <div>
-        <ul>
-            <li class="hbar1"><a href="/myapp/about/">Find out about this site</a></li>
-            <li class="hbar1"><a href = "{% url 'myapp:index' %}">Click here to return to main page</a><br/></li>
-            <li class="hbar1"><a href="{% url 'myapp:products' %}">Products</a></li>
-        </ul>
+        <div class="col-sm-2 LoginBox">
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'myapp:logout' %}">Logout</a>&nbsp; &nbsp;
+                <a href="{% url 'myapp:myorders' %}">View my orders</a>
+            {% else %}
+                <a href="{% url 'myapp:register' %}">Register Here</a>&nbsp; &nbsp;
+                <a href="{% url 'myapp:login' %}">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+    <section id="body">
+    <div class="container">
+                {% block body_block %}***{% endblock %}
     </div>
+    </section>
+    <footer>
+        Copyright 2022 - Multicultural Engineers. All Rights Reserved.
+    </footer>
 </body>
 </html>

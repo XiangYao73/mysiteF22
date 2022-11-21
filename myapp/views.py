@@ -7,6 +7,9 @@ from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 
+from django.core.mail import send_mail
+from random import seed, randint
+
 from .forms import InterestForm, OrderForm
 from .models import Category, Client, Order, Product
 from django.contrib.auth.models import User
@@ -151,3 +154,29 @@ def register(request):
             newuser.save()
             return HttpResponseRedirect(reverse("myapp:login"))
     return render(request, 'myapp/register.html')
+
+
+def forgotpassword(request):
+    if request.method == 'POST':
+        userEmail = request.POST['email']
+        userClient = Client.objects.filter(email=userEmail)
+        if userClient.count() > 0:
+            seed(1)
+            newpassword = str(randint(1000, 9999))
+            userClient.first().set_password(newpassword)
+            userClient.first().save()
+            send_mail(
+                'New password is set for your account',
+                'Hi. New Password is set for your account. Please use your new password for loging in. New Password:' + newpassword,
+                'noreply@myshop.com',
+                [userEmail],
+                fail_silently=False,
+            )
+            msg = 'New password has been sent to your email'
+            return render(request, 'MyApp/forgotPassword.html', {'msg': msg})
+        else:
+            msg = 'user Not Found'
+            return render(request, 'MyApp/forgotPassword.html', {'msg': msg})
+    else:
+        return render(request, 'MyApp/forgotPassword.html')
+

@@ -1,0 +1,88 @@
+.hbar1 {
+    display: inline;
+    margin: 15px;
+}
+
+h1 {
+    font-size: large;
+    color: blue;
+    border-left-style: none;
+    position: center;
+}
+
+body{
+    background-color: lightgrey;
+    color: black;
+}
+
+header
+{
+    background-color: steelblue;
+    color:white;
+    padding:25px;
+}
+
+#body
+{
+    background-color:white;
+    padding:25px;
+}
+
+nav
+{
+    padding:15px;
+    background-color:#122b40;
+    color:white;
+}
+
+nav ul
+{
+    list-style: none;
+}
+
+nav ul li:first-child
+{
+    margin-left:0px;
+}
+
+nav ul li
+{
+    display: inline-block;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    display:inline-block;
+    padding:10px;
+    min-width:120px;
+    border-radius:10px;
+    transition: all .5s;
+    text-align: center;
+}
+
+.mt-3
+{
+    margin-top:25px;
+}
+
+nav ul li a:hover {
+    text-decoration:none;
+    color:white;
+    background-color:orange;
+    transition: all .5s;
+}
+
+
+footer
+{
+    background-color:gray;
+    color:white;
+    padding:15px;
+}
+
+.LoginBox a, .LoginBox a:hover
+{
+    text-decoration: none;
+    color:white;
+}

@@ -117,13 +117,25 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static"),
-# ]
+STATIC_URL = "static/"
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #LOGIN_URL = '/myapp/login/'
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+
+EMAIL_HOST = 'smtp.ionos.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'eshop@eventtrigger.net'
+EMAIL_HOST_PASSWORD = 'Babak_MAC_884'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
