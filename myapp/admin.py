@@ -10,17 +10,15 @@ def add_stock(modeladmin, request, queryset):
 #    add_stock.short_description = "Update available status and add 50 in stock"
 
 
-class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'category', 'price', 'stock', 'available')
-    actions = [add_stock]
-
-
 def prefer_categories(obj):
     return obj.interested_in.all().values_list()
 
 
 class ClientAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'city', prefer_categories)
+    list_display = ('first_name', 'last_name', 'city', 'get_PreferedProducts')
+
+    def get_PreferedProducts(self, obj):
+        return "\n".join([p.name for p in obj.interested_in.all()])
 
 
 # Register your models here.
